@@ -1,0 +1,38 @@
+#total-wrapper{
+	text-align: center;
+	width: 80%;
+	margin: auto;
+}
+
+h1{
+	text-transform: uppercase;
+}
+
+.team1, .team2{
+	float:left;
+	box-sizing: border-box;
+	width: 50%;
+	height: 300px;
+	margin-top: 20px;
+	padding: 60px;
+}
+
+img{
+	max-width: 100%;
+	max-height: 300px;
+}
+
+.votes{
+	margin-top: 40px;
+	float: left;
+	width: 50%;
+}
+
+button{
+	height: 60px;
+	color: white;
+	background-color: green;
+	width: 150px;
+	font-size: 20px;
+}
+
