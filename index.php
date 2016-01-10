@@ -14,6 +14,11 @@
 	//replace the content in that div
 
 	//next button, start over.
+	$_SESSION["newuser"] = true;
+	if($_SESSION["newuser"]){
+		$query = "DELETE FROM user";
+		mysql_query($query);
+	}
 	$query = "SELECT * FROM football";
 	$result = mysql_query($query);
 	$index = 0;

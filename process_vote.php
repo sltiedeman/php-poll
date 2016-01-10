@@ -19,8 +19,25 @@
 		$query = "INSERT INTO votes (mid, team1votes, team2votes) 
 				VALUES ('$mid', '$team1votes', '$team2votes')";
 		$result = mysql_query($query);
-		
+
 	}else{
+		//get the current vote count and increment the correct one
+		if($teamsArray[0] == $team){
+			$query = "SELECT team1votes FROM votes WHERE mid = '$mid'";
+			$voteUpdate = mysql_query($query);
+			$voteUpdate = intval($voteUpdate);
+			// $voteUpdate = $voteUpdate + 1;
+			$query = "UPDATE votes SET team1votes=$voteUpdate WHERE mid = '$mid'";
+			$result = mysql_query($query);
+		}else{
+			$query = "SELECT team2votes FROM votes WHERE mid = '$mid'";
+			// $voteUpdate = mysql_query($query) + 1;
+			$voteUpdate = 55;
+			$query = "UPDATE votes SET team2votes=$voteUpdate WHERE mid = '$mid'";
+			$result = mysql_query($query);
+		}
+		//then update the database
+		// $query = "UPDATE votes SET mid"
 
 	}
 	$query = "INSERT INTO user (mid, team, team1votes, team2votes) VALUES ('$mid', '$team', '$team1votes', '$team2votes')";
