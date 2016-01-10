@@ -22,8 +22,10 @@
 		$teams[$index] = $team;
 		$index++;
 	}
+	//this a test value for the while loop below.  It makes sure a user
+	//has not already voted on a combination
 	$x = true;
-	$query = "SELECT * FROM votes";
+	$query = "SELECT * FROM user";
 	$result = mysql_query($query);
 	$numRows = mysql_num_rows($result);
 	$possibleCombinations = 6;
@@ -37,7 +39,7 @@
 			$arrayToSort = array($teams[$rand1], $teams[$rand2]);
 			sort($arrayToSort);
 			$teamMatch = $arrayToSort[0] . $arrayToSort[1];
-			$query2 = "SELECT * FROM votes WHERE mid = '$teamMatch'";
+			$query2 = "SELECT * FROM user WHERE mid = '$teamMatch'";
 			$result2 = mysql_query($query2);
 			if(mysql_num_rows($result2)==0){
 				$x = false;
