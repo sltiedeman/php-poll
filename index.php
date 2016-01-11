@@ -33,7 +33,7 @@
 	$query = "SELECT * FROM user";
 	$result = mysql_query($query);
 	$numRows = mysql_num_rows($result);
-	$possibleCombinations = 6;
+	$possibleCombinations = 91;
 	if($numRows < $possibleCombinations){
 		while($x){
 			$rand1 = rand(0, count($teams)-1);

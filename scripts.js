@@ -6,7 +6,6 @@ $( document ).ready(function() {
 		totalVotes++;
 		var teamOneVotes = $(this).attr("teamonevotes");
 		var teamTwoVotes = $(this).attr("teamtwovotes");
-		console.log(totalVotes);
 		var arrayToSort = [pick, opp];
 		arrayToSort.sort();
 		if(arrayToSort[0]==pick){
