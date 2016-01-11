@@ -13,7 +13,8 @@ $( document ).ready(function() {
 				// var new_opp = Number(obj.opp);
 				// $( "[team-wrapper="+vote+"]" ).html(new_vote+'% of the vote');
 				// $( "[team-wrapper="+opp+"]" ).html(new_opp+'% of the vote');
-				
+				console.log(result);
+
 	       	}
   	    });			
 	});

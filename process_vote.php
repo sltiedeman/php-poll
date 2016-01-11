@@ -23,10 +23,11 @@
 	}else{
 		//get the current vote count and increment the correct one
 		if($teamsArray[0] == $team){
-			$query = "SELECT team1votes FROM votes WHERE mid = '$mid'";
+			$query = "SELECT team1votes FROM votes WHERE mid = '".$mid."'";
+			print $query;
 			$voteUpdate = mysql_query($query);
-			$voteUpdate = intval($voteUpdate);
-			// $voteUpdate = $voteUpdate + 1;
+			// $voteUpdate = intval($voteUpdate);
+			$voteUpdate = $voteUpdate + 1;
 			$query = "UPDATE votes SET team1votes=$voteUpdate WHERE mid = '$mid'";
 			$result = mysql_query($query);
 		}else{
