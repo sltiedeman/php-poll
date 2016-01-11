@@ -14,10 +14,10 @@
 	//replace the content in that div
 
 	//next button, start over.
-	$_SESSION["newuser"] = true;
 	if($_SESSION["newuser"]){
 		$query = "DELETE FROM user";
 		mysql_query($query);
+		$_SESSION["newuser"] = false;
 	}
 	$query = "SELECT * FROM football";
 	$result = mysql_query($query);
@@ -55,8 +55,11 @@
 	}else{
 		print "No more combinations";
 	}
-
-
+	//Find the total votes for a particular matchup
+	$query = "SELECT team1votes, team2votes FROM votes WHERE mid = '$teamMatch'";
+	$result = mysql_query($query);
+	$row = mysql_fetch_row($result);
+	$totalVotes = $row[0] + $row[1];
 
 ?>
 
@@ -78,27 +81,27 @@
 
 	<div class="team1">
 		<?php 
-			print "<img src='images/" . $teams[$rand1] . ".png'>";
+			print "<img src='images/" . $arrayToSort[0] . ".png'>";
 		?>
 	</div>
 
 	<div class="team2">
 		<?php 
-			print "<img src='images/" . $teams[$rand2] . ".png'>";
+			print "<img src='images/" . $arrayToSort[1] . ".png'>";
 		?>
 	</div>
 	<div class="votes">
-		<h3>Votes: </h3>
-		<button class="vote" teamid="<?php print $teams[$rand1]; ?>" oppid="<?php print $teams[$rand2]; ?>">
-		<?php print $teams[$rand1]; ?></button>
+		<h3 id="team1votes">Votes:</h3>
+		<button class="vote" teamid="<?php print $arrayToSort[0]; ?>" oppid="<?php print $arrayToSort[1]; ?>" totalvotes="<?php print $totalVotes; ?>" teamonevotes="<?php print $row[0]; ?>" teamtwovotes="<?php print $row[1]; ?>">
+		<?php print $arrayToSort[0]; ?></button>
 	</div>
 	<div class="votes">
-		<h3>Votes: </h3>
-		<button class="vote" teamid="<?php print $teams[$rand2]; ?>" oppid="<?php print $teams[$rand1]; ?>">
-		<?php print $teams[$rand2]; ?></button>
+		<h3 id="team2votes">Votes:</h3>
+		<button class="vote" teamid="<?php print $arrayToSort[1]; ?>" oppid="<?php print $arrayToSort[0]; ?>" totalvotes="<?php print $totalVotes; ?>" teamonevotes="<?php print $row[0]; ?>" teamtwovotes="<?php print $row[1]; ?>">
+		<?php print $arrayToSort[1]; ?></button>
 	</div>
 
-	<button>Next</button>
+	<a href="index.php"><button id="next" style="display:none">Next</button></a>
 </h1>
 </body>
 </html>
